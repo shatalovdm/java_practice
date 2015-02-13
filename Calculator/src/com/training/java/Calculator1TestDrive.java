@@ -1,13 +1,14 @@
 package com.training.java;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Calculator1TestDrive {
 
-    public static int compute(Calculator1 calc) {
+    public static int compute(Calculator calc) {
         Scanner value = new Scanner(System.in);
         int oper = -1;
-//        int result = 0;
+        ArrayList myList = new ArrayList();
         while (oper != 0 || oper != 1 || oper != 2 || oper != 3) {
             System.out.println("Choose the number to make operation");
             System.out.println("0 stands for multiplication");
@@ -15,22 +16,43 @@ public class Calculator1TestDrive {
             System.out.println("2 stands for addition");
             System.out.println("3 stands for subtraction");
             oper = value.nextInt();
-            System.out.println("Provide the first int: ");
-            int num1 = value.nextInt();
-            System.out.println("Provide the second int: ");
-            int num2 = value.nextInt();
-            switch (oper) {
-                case 0:
-                    return calc.mult(num1, num2);
-                case 1:
-                    return calc.div(num1, num2);
-                case 2:
-                    return calc.addit(num1, num2);
-                case 3:
-                    return calc.subt(num1, num2);
-                default:
-                    System.out.println("You have provided the wrong option");
-                    break;
+            if (oper == 0 || oper == 1 || oper == 2 || oper == 3) {
+                System.out.println("Provide the first int: ");
+                String num1 = value.next();
+                myList.add(num1);
+                System.out.println("Provide the second int: ");
+                String num2 = value.next();
+                myList.add(num2);
+                if (myList.contains(Integer.parseInt(num1)) && myList.contains(Integer.parseInt(num2))) {
+                    switch (oper) {
+                        case 0:
+                            return calc.mult(Integer.parseInt(num1), Integer.parseInt(num2));
+                        case 1:
+                            return calc.div(Integer.parseInt(num1), Integer.parseInt(num2));
+                        case 2:
+                            return calc.addit(Integer.parseInt(num1), Integer.parseInt(num2));
+                        case 3:
+                            return calc.subt(Integer.parseInt(num1), Integer.parseInt(num2));
+                    }
+                }
+                else if (myList.contains(Double.parseDouble(num1)) || myList.contains(Double.parseDouble(num2))) {
+                    switch (oper) {
+                        case 0:
+                            return calc.mult(Double.parseDouble(num1), Double.parseDouble(num2));
+                        case 1:
+                            return calc.div(Double.parseDouble(num1), Double.parseDouble(num2));
+                        case 2:
+                            return calc.addit(Double.parseDouble(num1), Double.parseDouble(num2));
+                        case 3:
+                            return calc.subt(Double.parseDouble(num1), Double.parseDouble(num2));
+                    }
+                }
+                else {
+                    throw new NumberFormatException();
+                }
+            }
+            else {
+                System.out.println("You have provided the wrong option");
             }
         }
 //        return result;
@@ -38,7 +60,7 @@ public class Calculator1TestDrive {
     }
 
     public static void main(String[] args) {
-        Calculator1 number = new Calculator1();
+        Calculator number = new Calculator();
 //        new Calculator1TestDrive().compute(number);
         System.out.println("Result:" + compute(number));
 
