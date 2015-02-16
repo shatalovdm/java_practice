@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="org.junit:com.springsource.junit:3.8.1" type="repository">
+    <properties maven-id="org.junit:com.springsource.junit:3.8.1" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/com.springsource.junit-3.8.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

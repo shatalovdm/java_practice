@@ -3,12 +3,11 @@ package com.training.java;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Calculator1TestDrive {
+public class TestDrive {
 
-    public static int compute(Calculator calc) {
+    public static Object compute(Calculator calc) {
         Scanner value = new Scanner(System.in);
         int oper = -1;
-        ArrayList myList = new ArrayList();
         while (oper != 0 || oper != 1 || oper != 2 || oper != 3) {
             System.out.println("Choose the number to make operation");
             System.out.println("0 stands for multiplication");
@@ -19,11 +18,9 @@ public class Calculator1TestDrive {
             if (oper == 0 || oper == 1 || oper == 2 || oper == 3) {
                 System.out.println("Provide the first int: ");
                 String num1 = value.next();
-                myList.add(num1);
                 System.out.println("Provide the second int: ");
                 String num2 = value.next();
-                myList.add(num2);
-                if (myList.contains(Integer.parseInt(num1)) && myList.contains(Integer.parseInt(num2))) {
+               /* if (myList.contains(Integer.parseInt(num1)) && myList.contains(Integer.parseInt(num2))) {
                     switch (oper) {
                         case 0:
                             return calc.mult(Integer.parseInt(num1), Integer.parseInt(num2));
@@ -34,8 +31,8 @@ public class Calculator1TestDrive {
                         case 3:
                             return calc.subt(Integer.parseInt(num1), Integer.parseInt(num2));
                     }
-                }
-                else if (myList.contains(Double.parseDouble(num1)) || myList.contains(Double.parseDouble(num2))) {
+                }*/
+/*                else if (myList.contains(Double.parseDouble(num1)) && myList.contains(Double.parseDouble(num2))) {
                     switch (oper) {
                         case 0:
                             return calc.mult(Double.parseDouble(num1), Double.parseDouble(num2));
@@ -49,10 +46,10 @@ public class Calculator1TestDrive {
                 }
                 else {
                     throw new NumberFormatException();
-                }
+                }/**/
             }
             else {
-                System.out.println("You have provided the wrong option");
+              System.out.println("You have provided the wrong option");
             }
         }
 //        return result;
@@ -60,9 +57,11 @@ public class Calculator1TestDrive {
     }
 
     public static void main(String[] args) {
-        Calculator number = new Calculator();
+        CalculatorDouble cd = new CalculatorDouble(12.4, 15.6);
+        System.out.println(cd.mult() instanceof Double);
 //        new Calculator1TestDrive().compute(number);
-        System.out.println("Result:" + compute(number));
+        //System.out.println("Result:" + compute(number));
+
 
     }
 }
