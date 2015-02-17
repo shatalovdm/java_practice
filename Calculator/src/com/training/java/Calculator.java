@@ -5,8 +5,9 @@ package com.training.java;
  */
 public abstract class Calculator {
     public abstract Object mult();
-//    public int mult(int a, int b) {
-//        return a*b;
-//    }
+    public abstract Object div();
+    public abstract Object addit();
+    public abstract Object subt();
+
 
 }
