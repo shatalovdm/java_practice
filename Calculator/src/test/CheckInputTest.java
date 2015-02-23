@@ -14,10 +14,11 @@ public class CheckInputTest {
     public void setUp() {
         ci = new CheckInput();
     }
+
     @Test
     public void testIsDouble() {
-//        Assert.assertEquals(false, ci.isDouble("21"));
-//        Assert.assertEquals(true, ci.isDouble("21,3"));
-//        Assert.assertEquals(true, ci.isDouble("21.3"));
+        Assert.assertEquals(false, ci.isDouble("21"));
+        Assert.assertEquals(true, ci.isDouble("21,3"));
+        Assert.assertEquals(true, ci.isDouble("21.3"));
     }
 }

@@ -6,7 +6,9 @@ package com.training.java;
 public class CalculatorDouble extends Calculator {
     private double c;
     private double d;
-//    public double getC() {
+
+
+    //    public double getC() {
 //        return c;
 //    }
 //    public double getD() {
@@ -23,8 +25,7 @@ public class CalculatorDouble extends Calculator {
         this.d = d;
     }
 
-
-
+    //public CalculatorDouble newDouble = new CalculatorDouble(c, d);
     @Override
     public Object mult() {
         return c * d;

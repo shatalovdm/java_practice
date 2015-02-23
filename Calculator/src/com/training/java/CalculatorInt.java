@@ -1,8 +1,10 @@
 package com.training.java;
 
+
 public class CalculatorInt extends Calculator{
     private int a;
     private int b;
+
 //    public int getA() {
 //        return a;
 //    }
@@ -19,6 +21,7 @@ public class CalculatorInt extends Calculator{
         this.a = a;
         this.b = b;
     }
+    //public CalculatorInt newInt = new CalculatorInt(a, b);
     @Override
     public Object mult(){
         return a * b;
