@@ -14,6 +14,7 @@ public class TestDriveTest {
         Assert.assertEquals(true, TestDrive.isStringNumeric("12"));
         Assert.assertEquals(true, TestDrive.isStringNumeric("12,0"));
         Assert.assertEquals(true, TestDrive.isStringNumeric("12.0"));
+
     }
 
     @Test
