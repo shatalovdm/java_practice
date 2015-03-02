@@ -2,37 +2,36 @@ package com.training.java;
 
 
 public class CalculatorInt extends Calculator{
-    private int a;
-    private int b;
+    private int num1;
+    private int num2;
 
-//    public int getA() {
-//        return a;
-//    }
-//    public int getB() {
-//        return b;
-//    }
+    public Object getNum1() {
+        return num1;
+    }
+    public Object getNum2() {
+        return num2;
+    }
 //    public void setA(int d) {
-//        a = d;
+//        num1 = d;
 //    }
 //    public void setB(int c) {
-//        b = c;
+//        num2 = c;
 //    }
     public CalculatorInt (int a, int b) {
-        this.a = a;
-        this.b = b;
+        this.num1 = a;
+        this.num2 = b;
     }
-    //public CalculatorInt newInt = new CalculatorInt(a, b);
     @Override
     public Object mult(){
-        return a * b;
+        return num1 * num2;
     }
     public Object div(){
-        return a / b;
+        return num1 / num2;
     }
     public Object addit(){
-        return a + b;
+        return num1 + num2;
     }
     public Object subt(){
-        return a - b;
+        return num1 - num2;
     }
 }

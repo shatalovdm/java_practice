@@ -14,12 +14,23 @@ public class Editor {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String exp = reader.readLine();
         System.out.println(result.makeResult(exp));
+        System.out.println(result.makeResultMod(exp));
     }
 
     public static String makeResult(String s) {
-        for (int i = 2; i <= s.length(); i += 2) {
+        for (int i = 2; i < s.length(); i += 2) {
             s = s.substring(0, i) + s.substring(i + 1);
         }
         return s;
+    }
+
+    public static String makeResultMod(String s) {
+        String result = "";
+        for (int i = 0; i < s.length(); i++) {
+            if (i % 3 != 0 || i == 0) {
+                result += s.charAt(i);
+            }
+        }
+        return result;
     }
 }

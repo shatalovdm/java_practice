@@ -8,6 +8,6 @@ public abstract class Calculator {
     public abstract Object div();
     public abstract Object addit();
     public abstract Object subt();
-
-
+    public abstract Object getNum1();
+    public abstract Object getNum2();
 }

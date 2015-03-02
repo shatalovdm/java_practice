@@ -9,16 +9,16 @@ public class TestDrive {
     public static Object compute(Calculator calc, int operation) {
         switch (operation) {
             case 0:
-                return calc.mult();
+                return calc.getNum1() + " * " + calc.getNum2() + " = " + calc.mult();
             case 1:
-                return calc.div();
+                return calc.getNum1() + " / " + calc.getNum2() + " = " + calc.div();
             case 2:
-                return calc.addit();
+                return calc.getNum1() + " + " + calc.getNum2() + " = " + calc.addit();
             case 3:
-                return calc.subt();
+                return calc.getNum1() + " - " + calc.getNum2() + " = " + calc.subt();
             default:
-                System.out.println("You have provided the wrong option. Repeat you input...");
         }
+        System.out.println("hi");
         throw new IllegalArgumentException();
     }
 
@@ -29,7 +29,8 @@ public class TestDrive {
         System.out.println("2 stands for addition");
         System.out.println("3 stands for subtraction");
         String oper = value.next();
-        if (!oper.equals("0") || !oper.equals("1") || !oper.equals("2") || !oper.equals("3")) {
+        if (!oper.equals("0") && !oper.equals("1") && !oper.equals("2") && !oper.equals("3")) {
+            System.out.println("You have provided the wrong option. Repeat you input...");
             getOperation();
         }
         return Integer.parseInt(oper);
@@ -59,7 +60,7 @@ public class TestDrive {
         } else {
             calc = new CalculatorInt(Integer.parseInt(num1), Integer.parseInt(num2));
         }
-        System.out.println("Result:" + compute(calc, getOperation()));
+        System.out.println("Result: " + compute(calc, getOperation()));
     }
 }
 
