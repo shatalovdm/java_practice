@@ -15,6 +15,11 @@ public class Cat {
     public void setName(String name) {
         this.name = name;
     }
+    public void hello(){
+        String a = this.name;
+    }
+
+
 
     /* Реализовать метод addNewCat
     Реализовать метод addNewCat, чтобы при его вызове (т.е.
