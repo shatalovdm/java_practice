@@ -13,7 +13,7 @@ import java.util.Scanner;
 На основе среднего балла для каждого ученика определить тройку лучших и тройку аутсайдеров.
 Применить sparse twodimentionаl array, в котором строки соответствуют оценкам учеников.
 В результате распечатать id учеников с пояснением.
-        students.txt
+        rates.txt
         id_14 5 4 3 5 4 3 2 5
         id_15 5 3 5
         id_16 2 3 4 3
@@ -36,7 +36,7 @@ import java.util.Scanner;
             отсортировать
             обработать возможность OutOfBoundsArrayException (если студентов меньше 6) (если больше 6, то выводи одноим способом, иначе другим)
         */
-public class Main {
+public class AvgRates_ArrayList_notTestable {
     public static void main(String... args) {
         try {
             //Scanner in = new Scanner(new File(FILE_PATH));

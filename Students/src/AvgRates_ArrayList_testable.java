@@ -12,7 +12,7 @@ import java.util.Scanner;
 На основе среднего балла для каждого ученика определить тройку лучших и тройку аутсайдеров.
 Применить sparse twodimentionаl array, в котором строки соответствуют оценкам учеников.
 В результате распечатать id учеников с пояснением.
-        students.txt
+        rates.txt
         id_14 5 4 3 5 4 3 2 5
         id_15 5 3 5
         id_16 2 3 4 3
@@ -35,13 +35,13 @@ import java.util.Scanner;
             отсортировать
             обработать возможность OutOfBoundsArrayException (если студентов меньше 6) (если больше 6, то выводи одноим способом, иначе другим)
         */
-public class Main_v2 {
-    // Assert.assertEquals("", Main_v2.process("students.txt"))
+public class AvgRates_ArrayList_testable {
+    // Assert.assertEquals("", Main_v2.process("rates.txt"))
     public static void main(String[] args) {
         try {
-            String a = process("C:\\Users\\Дмитрий Шаталов\\Documents\\Java_training\\Students\\src\\students.txt");
+            String a = process("C:\\Users\\Дмитрий Шаталов\\Documents\\Java_training\\Students\\src\\rates.txt");
             System.out.println(a);
-            System.out.println(process("C:\\Users\\Дмитрий Шаталов\\Documents\\Java_training\\Students\\src\\students1.txt"));
+            System.out.println(process("C:\\Users\\Дмитрий Шаталов\\Documents\\Java_training\\Students\\src\\rates1.txt"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -80,7 +80,7 @@ public class Main_v2 {
                 for (int j = 0; j <  students.size() / 2 - 1; j++) {
                     answer += average[j] + ", ";
                 }
-                answer += average[average.length - 1] + ".\n";
+                answer += average[average.length - 1] + ".";
             } else {
                 answer = "There are less than 2 students in the list.\n";
             }
