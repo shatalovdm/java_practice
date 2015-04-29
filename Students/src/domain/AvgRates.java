@@ -35,7 +35,7 @@ public interface AvgRates {
      * @param rates структура с оценками студентов
      * @return структура со средними оценками
      */
-    HashMap<String, Double> computeAverage(HashMap<String, ArrayList<Integer>> rates);
+    HashMap<String, Double> computeAverage(HashMap<String, Object> rates);
 
     /**
      * 3) добавление новой оценки
@@ -51,7 +51,7 @@ public interface AvgRates {
      * @param id идентификатор студента, для которого осуществлять пересчет
      * @return структура со средними оценками
      */
-    HashMap<String, Double> computeAverage(HashMap<String, ArrayList<Integer>> rates, String id);
+    HashMap<String, Double> computeAverage(HashMap<String, Object> rates, String id);
 
     /**
      * 4) сохранение средних оценок в файл
