@@ -2,11 +2,7 @@ import domain.AvgRates;
 import domain.Path;
 
 import java.io.*;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by Дмитрий Шаталов on 4/12/2015.
@@ -25,8 +21,18 @@ public class AvgRates_HashMap implements AvgRates {
         //HashMap<String, Object> rates = p.readData(Path.path + "rates.txt");
         System.out.println(rates.get("id_145"));
 
+        HashMap<String, Double> avgs99 = p.computeAverage(rates, "id_99");
+        System.out.println(avgs99);
+
+        p.addRate(rates, "id_99", 3);
+
+        avgs99 = p.computeAverage(rates, "id_99");
+        System.out.println(avgs99);
+
         HashMap<String, Double> avgs = p.computeAverage(rates);
         System.out.println(avgs);
+
+        p.saveAverageToFile(students, avgs);
     }
 
     @Override
@@ -69,36 +75,70 @@ public class AvgRates_HashMap implements AvgRates {
     }
 
     @Override
-    public void addRate(HashMap<String, ArrayList<Integer>> rates, String id, Integer rate) {
-        //rates.put(id, rate);
+    public HashMap<String, Double> computeAverage1(HashMap<String, Object> rates) {
+        HashMap<String, Double> average = new HashMap<>();
+        for (String key: rates.keySet()) {
+            average.put(key, computeAverage1(rates, key));
+        }
+        return average;
+    }
+
+    /*  3.1) получить ArrayList с оценками студента
+     *  3.2) в ArrayList добавить новую оценку
+     *  3.3) заменить в rates запись с оценками для текущего студента
+     *  3.4) пересчитать среднюю оценку для студента
+     */
+    @Override
+    public HashMap<String, Object> addRate(HashMap<String, Object> rates, String id, Object rate) {
+        ArrayList list = new ArrayList();
+        list.addAll(rates.values());
+        list.add(rate);
+        rates.replace(id, list);
+        return rates;
     }
 
     @Override
     public HashMap<String, Double> computeAverage(HashMap<String, Object> rates, String id) {
-        ArrayList list = new ArrayList();
-        HashMap <String, Double> average = new HashMap();
-        double sum = 0;
-        list.add(rates.get(id));
-        for (int i = 0; i < list.size() - 1; i++) {
-            sum += Double.parseDouble(list.get(i).toString());
+        HashMap <String, Double> average = new HashMap<>();
+        int sum = 0;
+        ArrayList<Integer> r = new ArrayList<>();
+        r.addAll((Collection<? extends Integer>) rates.get(id));
+        for (Integer rate : r) {
+            sum += rate;
         }
-        average.put(id, sum / list.size());
+        double avg = (double)sum / r.size();
+        // double avg = sum*1.0 / r.size();
+        average.put(id, avg);
         return average;
     }
 
     @Override
-    public void saveAverageToFile(HashMap<String, String> students, HashMap<String, Double> avgRates) {
-        for (String a : students.keySet()) {
-            for (String b : avgRates.keySet()) {
-                if (a == b) {
-                    students.put(a, String.valueOf(avgRates.get(b)));
-                }
-            }
+    public Double computeAverage1(HashMap<String, Object> rates, String id) {
+        int sum = 0;
+        ArrayList<Integer> r = (ArrayList<Integer>)rates.get(id);
+        for (Integer rate : r) {
+            sum += rate;
         }
+        // double average = sum*1.0 / r.size();
+        return (double)sum / r.size();
+    }
+
+    /*
+     *  4.1) создать в директории файл для записи результатов
+     *  4.2) цикл по id (из какого HashMap - значения не имеет)
+     *  4.3) сохранить в файл строку, стостоящую из фамилии и средней оценки студента, полученной из обоих HashMap'ов по id
+     *  4.4) в конце цикла закрыть файл
+     */
+    @Override
+    public void saveAverageToFile(HashMap<String, Object> students, HashMap<String, Double> avgRates) {
         try {
-            File file = new File("finalList.txt");
+            File file = new File(Path.path + "finalList.txt");
             BufferedWriter output = new BufferedWriter(new FileWriter(file));
-            output.write(String.valueOf(students));
+            for (String id : students.keySet()) {
+                String line = students.get(id) + " " + avgRates.get(id);
+                output.write(line);
+                output.newLine();
+            }
             output.close();
         } catch ( IOException e ) {
             e.printStackTrace();
