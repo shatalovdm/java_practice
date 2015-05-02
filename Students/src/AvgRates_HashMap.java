@@ -91,7 +91,7 @@ public class AvgRates_HashMap implements AvgRates {
     @Override
     public HashMap<String, Object> addRate(HashMap<String, Object> rates, String id, Object rate) {
         ArrayList list = new ArrayList();
-        list.addAll(rates.values());
+        list.addAll((Collection) rates.get(id));
         list.add(rate);
         rates.replace(id, list);
         return rates;
