@@ -135,7 +135,7 @@ public class AvgRates_HashMap implements AvgRates {
             File file = new File(Path.path + "finalList.txt");
             BufferedWriter output = new BufferedWriter(new FileWriter(file));
             for (String id : students.keySet()) {
-                String line = students.get(id) + " " + avgRates.get(id);
+                String line = students.get(id) + " " + String.format("%.1f", avgRates.get(id));
                 output.write(line);
                 output.newLine();
             }
