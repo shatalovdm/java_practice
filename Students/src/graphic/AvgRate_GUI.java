@@ -10,6 +10,7 @@ public class AvgRate_GUI extends Frame {
         Button b=new Button("click me");
         b.setBounds(30,100,80,30);// setting button position
 
+        setTitle("Title");
         add(b);//adding button into frame
         setSize(300,300);//frame size 300 width and 300 height
         setLayout(null);//no layout manager
