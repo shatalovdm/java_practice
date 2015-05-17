@@ -1,3 +1,4 @@
+import avgRates.AvgRates_ArrayList_testable;
 import domain.Path;
 import org.junit.Assert;
 import org.junit.Test;

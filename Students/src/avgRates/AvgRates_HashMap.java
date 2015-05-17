@@ -1,3 +1,5 @@
+package avgRates;
+
 import domain.AvgRates;
 import domain.Path;
 
@@ -146,6 +148,6 @@ public class AvgRates_HashMap implements AvgRates {
     }
 
    /* public static void main(String[] args) {
-        new AvgRates_HashMap().ha();
+        new avgRates.AvgRates_HashMap().ha();
     }*/
 }

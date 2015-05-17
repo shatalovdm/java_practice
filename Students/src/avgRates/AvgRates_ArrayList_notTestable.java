@@ -1,7 +1,10 @@
+package avgRates;
+
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 /**
@@ -35,21 +38,12 @@ import java.util.Scanner;
             отсортировать
             обработать возможность OutOfBoundsArrayException (если студентов меньше 6) (если больше 6, то выводи одноим способом, иначе другим)
         */
-public class AvgRates_ArrayList_testable {
-    // Assert.assertEquals("", Main_v2.process("rates.txt"))
-    public static void main(String[] args) {
+public class AvgRates_ArrayList_notTestable {
+    public static void main(String... args) {
         try {
-            String a = process("C:\\Users\\Дмитрий Шаталов\\Documents\\Java_training\\Students\\src\\rates.txt");
-            System.out.println(a);
-            System.out.println(process("C:\\Users\\Дмитрий Шаталов\\Documents\\Java_training\\Students\\src\\rates1.txt"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static String process(String fileName) throws FileNotFoundException {
-        String answer;
-            Scanner in = new Scanner(new File(fileName)); // ArrayIndexOutOfBoundsException if args is empty
+            //Scanner in = new Scanner(new File(FILE_PATH));
+            Scanner in = new Scanner(new File(args[0])); // ArrayIndexOutOfBoundsException if args is empty
+                                                        // FileNotFoundException if file not found
             ArrayList<String[]> students = new ArrayList<String[]>(); // -> {"id_14", "5", "4", "5"}, {"id_15", "3", "4", "5", "5"}, {"id_16", "5"}
             while (in.hasNext()) {
                 students.add(in.nextLine().split(" "));
@@ -66,25 +60,28 @@ public class AvgRates_ArrayList_testable {
             }
             Arrays.sort(average);
             if (students.size() >= 6) {
-                answer = "Three best scores are: " + average[average.length - 1] + " " + average[average.length - 2] + " " + average[average.length - 3];
-                answer += "\nThree worst scores are: " + average[0] + " " + average[1] + " " + average[2];
+                System.out.println("Three best scores are: " + average[average.length - 1] + " " + average[average.length - 2] + " " + average[average.length - 3]);
+                System.out.println("Three worst scores are: " + average[0] + " " + average[1] + " " + average[2]);
             } else if (students.size() < 6 && students.size() > 1){
-                answer = students.size() / 2 + " best scores are: ";
+                System.out.print(students.size() / 2 + " best scores are: ");
                 // как прописать особый случай для последнего круга в лупе:
                 for (int i = 0; i <  students.size() / 2 - 1; i++) {
-                    answer += average[average.length - 1 - i] + ", ";
+                    System.out.print(average[average.length - 1 - i] + ", ");
                 }
-                answer += average[average.length - 1] + ".\n";
+                System.out.print(average[average.length - 1] + ". ");
 
-                answer += students.size() / 2 + " worst scores are: ";
-                for (int j = 0; j <  students.size() / 2 - 1; j++) {
-                    answer += average[j] + ", ";
+                System.out.println();
+                System.out.print(students.size() / 2 + " worst scores are: ");
+                for (int j = 0; j <  students.size() / 2; j++) {
+                    System.out.print(average[j] + " ");
                 }
-                answer += average[average.length - 1] + ".";
             } else {
-                answer = "There are less than 2 students in the list.\n";
+                System.out.println("There are less than 2 students in the list");
             }
-//            System.out.println(Arrays.toString(average));
-        return answer;
+            System.out.println();
+            System.out.println(Arrays.toString(average));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
